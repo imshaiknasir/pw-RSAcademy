@@ -174,11 +174,11 @@ test("Lecture 20", async ({ browser }) => {
   const newPage = await newPagePromise;
 
   const arrayText = await newPage.locator(".red").textContent();
-  const text = arrayText.split("@");
-  const email = text[1].split(" ")[0];
+  const text = arrayText?.split("@");
+  const email = text?.[1]?.split(" ")[0];
   console.log({ email });
 
-  await page.locator("#username").fill(email);
+  await page.locator("#username").fill(email ?? "");
   console.log(
     `Text in username field: ${await page.locator("#username").inputValue()}`
   );
