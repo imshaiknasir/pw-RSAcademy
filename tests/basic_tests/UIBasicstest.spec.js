@@ -19,7 +19,7 @@ test("Page Context Playwright Test", async ({ page }) => {
 });
 
 test("Fill Login Form with incorrect credentials", async () => {
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch();
   const browserContext = await browser.newContext();
   const page = await browserContext.newPage();
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
@@ -31,7 +31,7 @@ test("Fill Login Form with incorrect credentials", async () => {
 });
 
 test("Fill Login Form with correct credentials", async () => {
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch();
   const browserContext = await browser.newContext();
   const page = await browserContext.newPage();
 

@@ -7,6 +7,9 @@ export default defineConfig({
   reporter: "html",
   workers: 2,
   use: {
+    launchOptions: {
+      headless: true,
+    },
     ignoreHTTPSErrors: true,
     trace: "on",
     headless: true,
