@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test('@Webst Client App login', async ({ page }) => {
-  
+
   const email = "anshika@gmail.com";
   const password = "Iamking@000";
   const productName = 'IPHONE 13 PRO';
