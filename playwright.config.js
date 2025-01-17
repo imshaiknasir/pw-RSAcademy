@@ -6,7 +6,7 @@ export default defineConfig({
   fullyParallel: false,
   reporter: "html",
   workers: 2,
-  quiet: true,
+  // quiet: true,
   use: {
     launchOptions: {
       headless: true,
