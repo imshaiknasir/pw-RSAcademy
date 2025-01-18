@@ -5,6 +5,10 @@ on:
     - cron: '0 3 * * *'
   # Allows manual trigger of the workflow
   workflow_dispatch:
+  # Trigger on push to main branch
+  push:
+    branches:
+      - 'main'
 
 jobs:
   test:
