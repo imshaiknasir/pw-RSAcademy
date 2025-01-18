@@ -11,7 +11,7 @@ test.beforeAll(async () => {
     console.log('>>> End of Before all <<<')
 })
 
-test('Get all products and place order for the first product', async ({ page, request }) => {
+test('Get all products and place order for the first product', async ({ page }) => {
     await page.addInitScript(injectToken => {
         window.localStorage.setItem('token', injectToken)
     }, token)
