@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-test('Aborting the Request for the orders view page', async ({ page }) => {
+test('Aborting the Request', async ({ page }) => {
     // Navigate to the page
     await page.goto('https://rahulshettyacademy.com/')
 
