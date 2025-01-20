@@ -4,25 +4,34 @@
 
 This repository contains an automated testing framework built with Playwright for both UI and API testing.
 
-## Project Structure
+## Directory structure
 
 ```
+pw-rsacademy/
+├── README.md
+├── package.json
+├── playwright.config.js
 ├── tests/
-│   ├── api_tests/                 # API test scenarios
-│   │   ├── ApiTest_usingUtils.spec.js
-│   │   └── standaloneApiTest.spec.js
-│   ├── basic_tests/              # UI test scenarios
-│   │   ├── automationPractice.spec.js
+│   ├── api_tests/
+│   │   ├── ApiTest_ByAbortingNetworkCalls.spec.js
+│   │   ├── ApiTest_ByMockingTheRequest.spec.js
+│   │   ├── ApiTest_ByMockingTheResponse.spec.js
+│   │   ├── ApiTest_standalone.spec.js
+│   │   └── ApiTest_usingUtils.spec.js
+│   ├── basic_tests/
 │   │   ├── ClientApp.spec.js
 │   │   ├── ClientAppOtherWay.spec.js
+│   │   ├── LoginUsing_StorageState.spec.js
+│   │   ├── UIBasicstest.spec.js
+│   │   ├── automationPractice.spec.js
 │   │   ├── endToEnd_UI.spec.js
 │   │   ├── handlingCalendar.spec.js
-│   │   ├── playwrightLocators.spec.js
-│   │   └── UIBasicstest.spec.js
-│   └── utils/                    # Utility functions
+│   │   └── playwrightLocators.spec.js
+│   └── utils/
 │       └── API_Utils.js
-├── playwright.config.js          # Playwright configuration
-└── package.json                  # Project dependencies
+└── .github/
+    └── workflows/
+        └── playwright-tests.yml
 ```
 
 ## Setup
