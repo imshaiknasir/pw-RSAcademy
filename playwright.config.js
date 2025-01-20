@@ -5,7 +5,8 @@ export default defineConfig({
   testDir: "./tests",
   fullyParallel: false,
   reporter: [["html"], ["list"]],
-  workers: 2,
+  reportSlowTests: null,
+  workers: 4,
   quiet: true,
   retries: 1,
   use: {
