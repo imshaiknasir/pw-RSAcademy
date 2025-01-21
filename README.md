@@ -8,40 +8,20 @@ This repository contains an automated testing framework built with Playwright fo
 
 ```
 pw-rsacademy/
-├── _config.yml
-├── package.json
-├── package-lock.json
-├── playwright.config.js
 ├── README.md
-├── state.json
-├── .github
-│   └── workflows
-│       └── playwright-tests.yml
-└── tests
-    ├── api_tests
-    │   ├── ApiTest_ByAbortingNetworkCalls.spec.js
-    │   ├── ApiTest_ByMockingTheRequest.spec.js
-    │   ├── ApiTest_ByMockingTheResponse.spec.js
-    │   ├── ApiTest_standalone.spec.js
-    │   └── ApiTest_usingUtils.spec.js
-    ├── basic_tests
-    │   ├── automationPractice.spec.js
-    │   ├── ClientAppOtherWay.spec.js
-    │   ├── ClientApp.spec.js
-    │   ├── endToEnd_UI.spec.js
-    │   ├── handlingCalendar.spec.js
-    │   ├── LoginUsing_StorageState.spec.js
-    │   ├── playwrightLocators.spec.js
-    │   ├── screenshot.spec.js
-    │   ├── screenshot.spec.js-snapshots
-    │   │   └── screenshots-element-screenshot-linux.png
-    │   ├── UIBasicstest.spec.js
-    │   ├── visualTesting.spec.js
-    │   └── visualTesting.spec.js-snapshots
-    │       ├── screenshots-flight-booking-header-linux.png
-    │       └── screenshots-flight-booking-page-linux.png
-    └── utils
-        └── API_Utils.js
+├── package.json
+├── playwright.config.js
+├── tests/
+│   ├── api_tests/
+│   │   ├── ....spec.js
+│   ├── basic_tests/
+│   │   ├── ....spec.js
+│   └── utils/
+│       └── ....js
+└── .github/
+    └── workflows/
+        └── playwright-tests.yml
+
 ```
 
 ## Setup

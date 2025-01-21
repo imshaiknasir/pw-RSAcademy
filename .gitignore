@@ -7,3 +7,5 @@ node_modules/
 state.json
 screenshots/
 **/**snapshots/
+tests/utils/excelDemo_readWrite_updated.xlsx
+/**.xlsx
