@@ -2,7 +2,10 @@
   "name": "rsacademy_pw",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "pretest": "npx playwright test --grep '@visualTesting' --update-snapshots",
+    "test": "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "type": "module",

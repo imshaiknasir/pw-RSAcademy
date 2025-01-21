@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test';
 
-test('Page Screenshot comparison', async ({ page }) => {
+test('Page Screenshot comparison', { tag: ['@visualTesting'] }, async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 720 });
 
     await page.goto('https://www.flightaware.com/', { waitUntil: 'networkidle' });
     await expect(page).toHaveScreenshot('screenshots/flight-booking_page.png', { maxDiffPixels: 86 });
 });
 
-test('Element Screenshot comparison', async ({ page }) => {
+test('Element Screenshot comparison', { tag: ['@visualTesting'] }, async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 720 });
 
     await page.goto('https://www.flightaware.com/', { waitUntil: 'networkidle' });

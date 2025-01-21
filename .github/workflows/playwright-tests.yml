@@ -31,7 +31,7 @@ jobs:
         run: npx playwright install chromium --with-deps --only-shell
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npm run test
 
       - name: Upload test results
         if: always()
