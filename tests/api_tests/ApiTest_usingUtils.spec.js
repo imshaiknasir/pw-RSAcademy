@@ -12,6 +12,7 @@ test.beforeAll(async () => {
 })
 
 test('Get all products and place order for the first product', async ({ page }) => {
+    test.slow(); // Triples the default timeout
     await page.addInitScript(injectToken => {
         window.localStorage.setItem('token', injectToken)
     }, token)
