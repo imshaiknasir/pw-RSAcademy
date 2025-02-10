@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+.vscode/
+.gitignore
+.git/
+.env
+.github/
+.husky/
+.idea/
+.npmrc
+.prettierrc
+.prettierignore
+test-results/
+playwright-report/

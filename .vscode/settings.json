@@ -1,0 +1,11 @@
+{
+    "workbench.editor.revealIfOpen": true,
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay",
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // Set Prettier as the default formatter
+    "prettier.configPath": ".prettierrc", // Specify the path to Prettier config file
+    "prettier.requireConfig": true, // Require a Prettier config file to format
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode" // Set Prettier as default formatter specifically for JavaScript files
+    }
+}

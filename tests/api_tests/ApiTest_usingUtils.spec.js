@@ -12,13 +12,15 @@ test.beforeAll(async () => {
 })
 
 test('Get all products and place order for the first product', async ({ page }) => {
-    test.slow(); // Triples the default timeout
-    await page.addInitScript(injectToken => {
+    test.slow() // Triples the default timeout
+    await page.addInitScript((injectToken) => {
         window.localStorage.setItem('token', injectToken)
     }, token)
 
-    const requestPromise = page.waitForRequest(request => request.url().includes("/api/ecom/product/get-all-products") && request.method() === "POST")
-    await page.goto('https://rahulshettyacademy.com/client');
+    const requestPromise = page.waitForRequest(
+        (request) => request.url().includes('/api/ecom/product/get-all-products') && request.method() === 'POST',
+    )
+    await page.goto('https://rahulshettyacademy.com/client')
     const requestResolved = await requestPromise
 
     // Get the response and parse its JSON
@@ -45,25 +47,26 @@ test('Get all products and place order for the first product', async ({ page }) 
     console.log(`>> Order id is ${orderId}`)
 
     // Navigate to the order history page
-    await page.locator("//button[@routerlink='/dashboard/myorders']").click();
+    await page.locator("//button[@routerlink='/dashboard/myorders']").click()
 
     // Find the order with the order id
-    const allOrderRows = page.locator("//tr");
-    await allOrderRows.first().waitFor({ state: "visible" }); // lets wait for the first order row to be visible
+    const allOrderRows = page.locator('//tr')
+    await allOrderRows.first().waitFor({ state: 'visible' }) // lets wait for the first order row to be visible
 
     for (let i = 0; i < (await allOrderRows.count()); i++) {
-        const orderRow = allOrderRows.nth(i); // this will get the order row
-        const orderIdFromOrderHistory = await orderRow.locator("//th[1]").textContent(); // this will get the order id from the order history
+        const orderRow = allOrderRows.nth(i) // this will get the order row
+        const orderIdFromOrderHistory = await orderRow.locator('//th[1]').textContent() // this will get the order id from the order history
 
-        if (orderIdFromOrderHistory === orderId) { // this will check if the order id from the order history matches with the extracted order id
+        if (orderIdFromOrderHistory === orderId) {
+            // this will check if the order id from the order history matches with the extracted order id
             console.log(`>> Order id ${orderId} found in the order history`)
-            await orderRow.getByRole("button", { name: "View", exact: true }).click(); // this will click on the "view" button
-            break;
+            await orderRow.getByRole('button', { name: 'View', exact: true }).click() // this will click on the "view" button
+            break
         }
     }
 
     // Assert the order id in the Order Details Page
-    const orderIdInOrderDetailsPage = page.locator("//small/following-sibling::div");
-    await orderIdInOrderDetailsPage.waitFor({ state: "visible" });
-    expect((await orderIdInOrderDetailsPage.textContent()).trim()).toContain(orderId);
+    const orderIdInOrderDetailsPage = page.locator('//small/following-sibling::div')
+    await orderIdInOrderDetailsPage.waitFor({ state: 'visible' })
+    expect((await orderIdInOrderDetailsPage.textContent()).trim()).toContain(orderId)
 })

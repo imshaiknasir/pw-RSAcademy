@@ -7,9 +7,9 @@ test.beforeAll(async () => {
     const apiContext = await request.newContext()
     const response = await apiContext.post('https://rahulshettyacademy.com/api/ecom/auth/login', {
         data: {
-            userEmail: "anshika@gmail.com",
-            userPassword: "Iamking@000"
-        }
+            userEmail: 'anshika@gmail.com',
+            userPassword: 'Iamking@000',
+        },
     })
     expect(response.status()).toBe(200)
     const responseBody = await response.json()
@@ -20,12 +20,16 @@ test.beforeAll(async () => {
 
 test('Mocking the response for the orders page', async ({ page }) => {
     // First we need to inject the token into the page
-    await page.addInitScript(injectToken => {
+    await page.addInitScript((injectToken) => {
         window.localStorage.setItem('token', injectToken)
     }, token)
 
     // Before we navigate to the page, we need to wait for a request to be made
-    const getRequestPromise = page.waitForRequest(request => request.url().includes('https://rahulshettyacademy.com/api/ecom/user/get-cart-count/') && request.method() === 'GET')
+    const getRequestPromise = page.waitForRequest(
+        (request) =>
+            request.url().includes('https://rahulshettyacademy.com/api/ecom/user/get-cart-count/') &&
+            request.method() === 'GET',
+    )
     // Then we need to navigate to the page
     await page.goto('https://rahulshettyacademy.com/client')
     // Wait for the request to be made
@@ -42,11 +46,14 @@ test('Mocking the response for the orders page', async ({ page }) => {
     await productsLocator.first().waitFor({ state: 'visible' })
 
     // Mock the response for the orders page, before we go to the orders page
-    await page.route(`https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/${userId}`, async route => {
-        await route.fulfill({
-            body: JSON.stringify({ "data": [], "message": "No Orders" })
-        })
-    })
+    await page.route(
+        `https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/${userId}`,
+        async (route) => {
+            await route.fulfill({
+                body: JSON.stringify({ data: [], message: 'No Orders' }),
+            })
+        },
+    )
 
     // Lets goto Orders page
     await page.locator("//button[@routerlink='/dashboard/myorders']").click()

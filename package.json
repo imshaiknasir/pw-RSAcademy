@@ -1,19 +1,30 @@
 {
-  "name": "rsacademy_pw",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "pretest": "npx playwright test --grep '@visualTesting' --update-snapshots",
-    "test": "npx playwright test"
-  },
-  "keywords": [],
-  "author": "",
-  "type": "module",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.2",
-    "exceljs": "^4.4.0"
-  }
+    "name": "rsacademy_pw",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "pretest": "npx playwright test --grep '@visualTesting' --update-snapshots",
+        "test": "npx playwright test"
+    },
+    "keywords": [
+        "playwright",
+        "test",
+        "udemy",
+        "rahul shetty",
+        "javascript",
+        "automation",
+        "cucumber"
+    ],
+    "author": "@imshaiknasir",
+    "license": "ISC",
+    "type": "module",
+    "description": "",
+    "devDependencies": {
+        "@playwright/test": "^1.50.1",
+        "@types/node": "^22.13.1",
+        "prettier": "^3.5.0",
+        "exceljs": "^4.4.0"
+    }
 }

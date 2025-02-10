@@ -4,10 +4,10 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: false,
-  reporter: [["html"], ["list"]],
+  reporter: [["html", { open: "never" }], ["list"]],
   reportSlowTests: null,
   workers: 4,
-  quiet: true,
+  // quiet: true,
   retries: 1,
   use: {
     launchOptions: {

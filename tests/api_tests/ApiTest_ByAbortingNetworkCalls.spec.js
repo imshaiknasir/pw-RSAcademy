@@ -8,7 +8,7 @@ test('Aborting the Request', async ({ page }) => {
     await expect(registerButtonLocator).toHaveCSS('background-color', 'rgb(236, 82, 82)') // it should have red background color
 
     // Next, we will do the same check with aborting the request for the css files
-    await page.route('**/*.css', async route => {
+    await page.route('**/*.css', async (route) => {
         await route.abort()
     })
     await page.reload()

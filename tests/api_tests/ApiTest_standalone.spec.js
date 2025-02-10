@@ -7,9 +7,9 @@ test.beforeAll(async () => {
     const apiContext = await request.newContext()
     const response = await apiContext.post('https://rahulshettyacademy.com/api/ecom/auth/login', {
         data: {
-            userEmail: "anshika@gmail.com",
-            userPassword: "Iamking@000"
-        }
+            userEmail: 'anshika@gmail.com',
+            userPassword: 'Iamking@000',
+        },
     })
     expect(response.status()).toBe(200)
     const responseBody = await response.json()
@@ -20,7 +20,7 @@ test.beforeAll(async () => {
 
 test('Login using API token', async ({ page }) => {
     // First we need to inject the token into the page
-    await page.addInitScript(injectToken => {
+    await page.addInitScript((injectToken) => {
         window.localStorage.setItem('token', injectToken)
     }, token)
 
@@ -37,12 +37,14 @@ test('Login using API token', async ({ page }) => {
 })
 
 test('Get all products and place order for the first product', async ({ page, request }) => {
-    await page.addInitScript(injectToken => {
+    await page.addInitScript((injectToken) => {
         window.localStorage.setItem('token', injectToken)
     }, token)
 
-    const requestPromise = page.waitForRequest(request => request.url().includes("/api/ecom/product/get-all-products") && request.method() === "POST")
-    await page.goto('https://rahulshettyacademy.com/client');
+    const requestPromise = page.waitForRequest(
+        (request) => request.url().includes('/api/ecom/product/get-all-products') && request.method() === 'POST',
+    )
+    await page.goto('https://rahulshettyacademy.com/client')
     const requestResolved = await requestPromise
 
     // Get the response and parse its JSON
@@ -61,11 +63,11 @@ test('Get all products and place order for the first product', async ({ page, re
 
     // Place order for the first product
     const placeOrderResponse = await request.post(`https://rahulshettyacademy.com/api/ecom/order/create-order`, {
-        data: { "orders": [{ "country": "India", "productOrderedId": firstProduct._id }] },
+        data: { orders: [{ country: 'India', productOrderedId: firstProduct._id }] },
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `${token}`
-        }
+            Authorization: `${token}`,
+        },
     })
     expect(placeOrderResponse.status()).toBe(201)
 
@@ -75,25 +77,26 @@ test('Get all products and place order for the first product', async ({ page, re
     console.log(`>> Order id is ${orderId}`)
 
     // Navigate to the order history page
-    await page.locator("//button[@routerlink='/dashboard/myorders']").click();
+    await page.locator("//button[@routerlink='/dashboard/myorders']").click()
 
     // Find the order with the order id
-    const allOrderRows = page.locator("//tr");
-    await allOrderRows.first().waitFor({ state: "visible" }); // lets wait for the first order row to be visible
+    const allOrderRows = page.locator('//tr')
+    await allOrderRows.first().waitFor({ state: 'visible' }) // lets wait for the first order row to be visible
 
     for (let i = 0; i < (await allOrderRows.count()); i++) {
-        const orderRow = allOrderRows.nth(i); // this will get the order row
-        const orderIdFromOrderHistory = await orderRow.locator("//th[1]").textContent(); // this will get the order id from the order history
+        const orderRow = allOrderRows.nth(i) // this will get the order row
+        const orderIdFromOrderHistory = await orderRow.locator('//th[1]').textContent() // this will get the order id from the order history
 
-        if (orderIdFromOrderHistory === orderId) { // this will check if the order id from the order history matches with the extracted order id
+        if (orderIdFromOrderHistory === orderId) {
+            // this will check if the order id from the order history matches with the extracted order id
             console.log(`>> Order id ${orderId} found in the order history`)
-            await orderRow.getByRole("button", { name: "View", exact: true }).click(); // this will click on the "view" button
-            break;
+            await orderRow.getByRole('button', { name: 'View', exact: true }).click() // this will click on the "view" button
+            break
         }
     }
 
     // Assert the order id in the Order Details Page
-    const orderIdInOrderDetailsPage = page.locator("//small/following-sibling::div");
-    await orderIdInOrderDetailsPage.waitFor({ state: "visible" });
-    expect((await orderIdInOrderDetailsPage.textContent()).trim()).toContain(orderId);
+    const orderIdInOrderDetailsPage = page.locator('//small/following-sibling::div')
+    await orderIdInOrderDetailsPage.waitFor({ state: 'visible' })
+    expect((await orderIdInOrderDetailsPage.textContent()).trim()).toContain(orderId)
 })
