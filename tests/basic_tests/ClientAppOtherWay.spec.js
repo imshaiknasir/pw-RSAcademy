@@ -21,7 +21,7 @@ test('@Webst Client App login', async ({ page }) => {
 
     await page.getByRole('listitem').getByRole('button', { name: 'Cart' }).click()
 
-    await page.locator('div li').first().waitFor()
+    await page.locator('div.cart li').first().waitFor()
     await expect(page.getByText(productName)).toBeVisible()
 
     await page.getByRole('button', { name: 'Checkout' }).click()
