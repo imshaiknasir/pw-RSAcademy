@@ -23,7 +23,7 @@
     "description": "",
     "devDependencies": {
         "@playwright/test": "^1.50.1",
-        "@types/node": "^22.13.4",
+        "@types/node": "^22.13.7",
         "prettier": "^3.5.2",
         "exceljs": "^4.4.0"
     }
