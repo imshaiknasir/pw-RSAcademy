@@ -30,7 +30,7 @@ async function readFromExcel(sheetName, searchText) {
 
 test('upload and download', async ({ page }) => {
     // variables
-    const sheetPath = 'downloadedExcel.xlsx'
+    const sheetPath = 'test-data/downloadedExcel.xlsx'
     const sheetName = 'Sheet1'
     const searchText = 'Mango'
     const updatedText = 100

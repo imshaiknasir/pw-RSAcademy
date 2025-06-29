@@ -7,6 +7,7 @@ test('Calendar validations', async ({ page }) => {
     const expectedList = [monthNumber, date, year]
     await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/offers')
     await page.locator('.react-date-picker__inputGroup').click()
+    await page.locator('.react-date-picker__inputGroup').waitFor({ state: 'hidden' })
     await page.locator('.react-calendar__navigation__label').click()
     await page.locator('.react-calendar__navigation__label').click()
     await page.getByText(year).click()

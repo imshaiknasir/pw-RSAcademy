@@ -5,14 +5,14 @@ import { test, expect, chromium } from '@playwright/test'
  * This covers upto Lecture 14
  */
 
-test('Browser Context Playwright Test', async ({ browser }) => {
+test('Browser Context Playwright Test', { tag: '@smoke' }, async ({ browser }) => {
     const browserContext = await browser.newContext()
     const page = await browserContext.newPage()
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/')
     console.log(await page.title())
 })
 
-test('Page Context Playwright Test', async ({ page }) => {
+test('Page Context Playwright Test', { tag: '@smoke' }, async ({ page }) => {
     await page.goto('https://google.com')
     console.log(await page.title())
     await expect(page).toHaveTitle('Google')

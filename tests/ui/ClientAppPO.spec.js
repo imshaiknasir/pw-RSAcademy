@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import PageObjManager from '../../pages/pageObj_manager'
+import PageObjManager from '../../src/pages/pageObj_manager'
 
 /**
  * Lecture 73-75: Page Object Model

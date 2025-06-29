@@ -2,8 +2,9 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "./tests",
-  fullyParallel: false,
+  testDir: './tests/',
+  /* Run tests in files in parallel */
+  fullyParallel: true,
   reporter: [["html", { open: "never" }], ["list"]],
   reportSlowTests: null,
   workers: 4,

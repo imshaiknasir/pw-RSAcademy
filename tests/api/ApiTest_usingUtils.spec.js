@@ -1,13 +1,14 @@
 import { expect, request, test } from '@playwright/test'
-import { API_Utils } from '../utils/API_Utils'
+import apiUtils from '../../src/utils/apiUtils'
 
 let token = ''
 const apiContext = await request.newContext()
-const apiUtils = new API_Utils(apiContext)
+const apiUtilsObj = new apiUtils(apiContext)
+
 
 test.beforeAll(async () => {
     console.log('>>> Start of Before all <<<')
-    token = await apiUtils.getToken()
+    token = await apiUtilsObj.getToken()
     console.log('>>> End of Before all <<<')
 })
 
@@ -38,7 +39,7 @@ test('Get all products and place order for the first product', async ({ page }) 
     console.log(`>> First product name is ${firstProduct.productName} and id is ${firstProduct._id}`)
 
     // Place order for the first product
-    const placeOrderResponse = await apiUtils.placeOrder(token, firstProduct._id)
+    const placeOrderResponse = await apiUtilsObj.placeOrder(token, firstProduct._id)
     expect(placeOrderResponse.status()).toBe(201)
 
     // Get the order id from the response

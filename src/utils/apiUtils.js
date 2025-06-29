@@ -1,4 +1,4 @@
-export class API_Utils {
+export default class apiUtils {
     constructor(apiContext) {
         this.apiContext = apiContext
     }
