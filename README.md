@@ -7,21 +7,28 @@ This repository contains an automated testing framework built with Playwright fo
 ## Directory structure
 
 ```
-pw-rsacademy/
+pw-RSAcademy/
 ├── README.md
 ├── package.json
 ├── playwright.config.js
-├── tests/
-│   ├── api_tests/
-│   │   ├── ....spec.js
-│   ├── basic_tests/
-│   │   ├── ....spec.js
+├── .github/
+│   └── workflows/
+│       └── playwright-tests.yml
+├── src/
+│   ├── api/
+│   ├── pages/
+│   │   └── ....js
 │   └── utils/
 │       └── ....js
-└── .github/
-    └── workflows/
-        └── playwright-tests.yml
-
+├── tests/
+│   ├── api/
+│   │   └── ....spec.js
+│   └── ui/
+│       └── ....spec.js
+├── test-data/
+│   └── ....xlsx
+├── playwright-report/
+└── test-results/
 ```
 
 ## Setup
