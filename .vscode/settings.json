@@ -6,6 +6,6 @@
     "prettier.configPath": ".prettierrc", // Specify the path to Prettier config file
     "prettier.requireConfig": true, // Require a Prettier config file to format
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode" // Set Prettier as default formatter specifically for JavaScript files
+        "editor.defaultFormatter": "vscode.typescript-language-features" // Set Prettier as default formatter specifically for JavaScript files
     }
 }
