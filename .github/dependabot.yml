@@ -1,9 +1,12 @@
-version: 2
+version: 3
 updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-name: "@playwright/test"
+      - dependency-name: "exceljs"
     open-pull-requests-limit: 10
     reviewers:
       - "imshaiknasir"
