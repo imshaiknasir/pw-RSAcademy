@@ -66,3 +66,12 @@ npx playwright show-report <path-to-extracted-folder>
 ```
 
 The workflow runs all Playwright tests on push and pull request events, ensuring code quality and test coverage.
+
+## Repository Labels
+
+This repository uses the following labels for automated processes:
+
+- **automated**: Applied to pull requests created by automated processes (e.g., bots, workflows)
+- **dependencies**: Applied to pull requests that update dependency files
+
+These labels are automatically created and managed by the [setup-labels.yml](.github/workflows/setup-labels.yml) workflow and are used by Dependabot PRs as configured in [dependabot.yml](.github/dependabot.yml).
